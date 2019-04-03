@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/model.css" />
+	</head>
+
+	<body>
+		<div id="div">
+			<input type="text" placeholder="请输入内容" v-model="mjy" /><button @click="dianji">点击</button>
+			<div class="motaikuang" v-if="xianShi">
+				<div class="aa">
+					<my-modal :todo="mjy">
+					</my-modal>
+					<ul>
+						<li @click="dianjiTwo">
+							<a href="#">
+								{{ queDing }}
+							</a>
+						</li>
+						<li @click="dianjiTwo">
+							<a href="#">
+								{{ quXiao }}
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		Vue.component("my-modal", {
+			data: function() {
+				return {}
+			},
+			template: `
+					<div>
+						<p>{{ todo }}</p>
+					</div>
+				`,
+			props: ["todo"]
+		});
+		var vm = new Vue({
+			el: "#div",
+			data: function() {
+				return {
+					queDing: "确定",
+					quXiao: "取消",
+					mjy: "",
+					xianShi: false
+				}
+			},
+			methods: {
+				dianji: function() {
+					this.xianShi = true;
+				},
+				dianjiTwo: function() {
+					this.xianShi = false;
+					this.mjy = ""
+				}
+			}
+		})
+	</script>
+
+</html>

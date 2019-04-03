@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<!--<div id="wrap">
+			{{ jiao }}
+			<p v-bind:class="aa">
+				{{ aa }}
+			</p>
+			<header v-if="flag">
+				{{ aa }}
+			</header>
+
+			<ul>
+				<li v-for="(v,k) in list">
+					{{ k + ":" + v.name }}
+				</li>
+			</ul>-->
+		<!--数组语法-->
+		<!--<div v-bind:class="[haha, xixi]">-->
+		<!--我是数组语法-->
+		<!--</div>-->
+		<!-- 事件驱动/、 -->
+		<!--<div class="myfooter" v-on:click="myfunction" @click="httpfunction">
+				{{ jiao }}
+			</div>
+			<div class="cc">
+				<input type="text" v-model="inputvalue" /><span> {{ inputvalue }} </span>
+			</div>
+			<div class="aa">
+				{{ gg }}
+			</div>
+		</div>-->
+
+		<div id="my-header">
+			{{ qq }}, {{ zz }}
+			<div>
+				<my-header :todo="qq" :header="zz" v-on:handle-child="handPerson"></my-header>
+			</div>
+		</div>
+
+	</body>
+	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+				var vue = new Vue({
+					el: "#wrap",
+					data: function() {
+						return {
+							jiao: "我真帅！！！",
+							aa: "我是p标签",
+							flag: true,
+							list: [
+								{ name: "钱一" },
+								{ name: "贾二" },
+								{ name: "张三" },
+								{ name: "李四" },
+								{ name: "王五" },
+								{ name: "赵六" },
+							],
+							haha: "myvue",
+							xixi: "mysql",
+							inputvalue: ""
+						}
+					},
+					//事件驱动
+					methods: {
+						myfunction: function() {
+							console.log(this);
+							console.log(this.jiao);
+							this.httpfunction();
+						},
+						httpfunction() {
+							this.jiao = "我真的太帅了!!!";
+						}
+					},
+					computed: {
+						gg: function() {
+							return this.jiao.split('').reverse().join('')
+						}
+					},
+		
+				});
+
+		Vue.component("my-header", {
+			data: function() {
+				return {
+					msg: "jiaominglong",
+					qq: "哈哈吧",
+					pro: null,
+					childMessage:"我是子组件的内容"
+				}
+			},
+			template: `
+						<div>
+							<a 
+								href="#"
+							>
+							{{ msg }}
+							</a>
+							<a 
+								href="#"
+								@click=$emit("handle-child","chlidMessage")
+							
+							>
+								{{ todo }}
+								{{ header }}
+							</a>
+						</div>
+							
+					`,
+			props: {
+				todo: {
+					type: String,
+					default: ""
+				},
+				header: {
+					type: Number,
+					defaule: 0
+				}
+			},
+			methods: {
+								dianji:function(){
+									this.msg = "hzfnhzdfkhgfjsgj";
+								},
+				handPerson: function(data) {
+					console.log(data);
+				}
+			},
+						watch: function(xin,old){
+							console.log(xin+"这是新的"+old+"这是旧的")
+						}
+
+		});
+		var aa = new Vue({
+			el: "#my-header",
+			data: function() {
+				return {
+					qq: "heihei",
+					zz: 3
+				}
+			}
+		})
+	</script>
+
+</html>

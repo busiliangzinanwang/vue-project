@@ -1,0 +1,42 @@
+#div{
+	width:100%;
+	margin:0px auto;
+	
+}
+.motaikuang{
+	height: 1000px;
+	width: 100%;
+	background-color: #000000;
+	opacity: 0.7;
+	margin: -60px auto;
+}
+.aa{
+	height: 500px;
+	width: 500px;
+	border: 1px solid red;
+	margin: 30px auto;
+}
+.motaikuang p{
+	height: 300px;
+	width: 300px;
+	border: 1px solid #D8E4C6;
+	margin: 0px auto;
+	margin-top: 30PX;
+}
+ul{
+	margin-top: 50px;
+	display: flex;
+	justify-content: space-around;
+}
+ul li{
+	list-style: none;
+	height: 40px;
+	width: 100px;
+	background-color: darkblue
+}
+li a{
+	text-decoration: none;
+	color: white;
+	line-height: 40px;
+	margin-left: 30px;
+}
